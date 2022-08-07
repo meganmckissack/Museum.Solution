@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Museum.Models.Gallery
+
+<h2>Gallery Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.GalleryName): @Html.DisplayFor(model => model.GalleryName)<h3>
+
+    <h3>@Html.Label("Artwork"):
+      @foreach (var join in Model.JoinArtworkGallery)
+      {
+        <p>@join.Artwork.Title</p>
+      }
+
+      @if (@Model.JoinArtistGallery.Count == 0)
+      {
+        <p>This Gallery does not contain any Artists</p>
+      }
+      else
+      {
+        <h4>Artists:</h4>
+        <ul>
+          @foreach (var join in Model.JoinArtistGallery)
+          {
+            <li>@join.Artist.ArtistName</li>
+          }
+        </ul>
+      }
+      <hr />
+      <p>@Html.ActionLink("Add Artwork", "Create", "Artworks")</p>
+      <p>@Html.ActionLink("Edit Gallery", "Edit", new { id = Model.GalleryId })</p>
+      <p>@Html.ActionLink("Delete Gallery", "Delete", new { id = Model.GalleryId })</p>
+      <p>@Html.ActionLink("Back to list", "Index")</p>

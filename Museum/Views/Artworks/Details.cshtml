@@ -27,10 +27,10 @@
         @Html.DisplayFor(model => model.Title)
       </td>
       <td>
-        <!-- @foreach(var join in Model.JoinArtistArtwork)
+        @foreach(var join in Model.JoinArtistArtwork)
           {
             <li>@join.Artist.ArtistName</li>
-          } -->
+          }
       </td>
       <td>
         @Html.ActionLink("Edit", "Edit", new { id = Model.ArtworkId }) |

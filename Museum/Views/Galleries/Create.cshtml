@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Museum.Models.Gallery
+
+<h4>Add a new Gallery</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.GalleryName)
+  @Html.TextBoxFor(model => model.GalleryName)
+
+  @* <!-- @//Html.Label("Select Gallery")
+  @//Html.DropDownList("GalleryId") --> *@
+
+  <input type="submit" value="Add new Gallery" />
+}
+<hr />
+<p>@Html.ActionLink("Show all Galleries", "Index")</p>
