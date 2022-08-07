@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Museum.Models.Artwork
+
+<h2>Edit</h2>
+
+<h4>Edit this Artwork: @Html.DisplayFor(model => model.Title)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ArtworkId)
+
+  @Html.LabelFor(model => model.Title)
+  @Html.EditorFor(model => model.Title)
+
+  <!-- @Html.Label("Select Artist")
+  @Html.DropDownList("ArtistId") -->
+
+  <input type="submit" value="Save" />
+}
+<hr />
+<p>@Html.ActionLink("Back to list", "Index")</p>

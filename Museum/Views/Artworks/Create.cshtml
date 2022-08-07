@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@using System.Collections.Generic;
+@using Museum.Models;
+@model Museum.Models.Artwork
+
+<h4>Add a new task</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Title)
+  @Html.TextBoxFor(model => model.Title)
+
+  <!-- @Html.Label("Select Artist")
+  @Html.DropDownList("ArtistId") -->
+
+  <input type="submit" value="Add new Artwork"/>
+}
+<hr />
+<p>@Html.ActionLink("Show all Artworks", "Index")</p>

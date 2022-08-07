@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Museum.Models.Artist
+
+<h4>Add a new Artist</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.ArtistName)
+  @Html.TextBoxFor(model => model.ArtistName)
+
+  <!-- @Html.Label("Select Gallery")
+  @Html.DropDownList("GalleryId") -->
+
+  <input type="submit" value="Add new Artist"/>
+}
+<hr />
+<p>@Html.ActionLink("Show all Artists", "Index")</p>

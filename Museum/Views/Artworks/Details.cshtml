@@ -1,0 +1,41 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Museum.Models.Artwork
+
+<h1>Artwork Details</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        Artwork Title
+      </th>
+      <th>
+        Artist
+      </th>
+      <th>
+        Gallery
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        @Html.DisplayFor(model => model.Title)
+      </td>
+      <td>
+        <!-- @foreach(var join in Model.JoinArtistArtwork)
+          {
+            <li>@join.Artist.ArtistName</li>
+          } -->
+      </td>
+      <td>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ArtworkId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = Model.ArtworkId })
+      </td>
+    </tr>
+  </tbody>
+</table>
