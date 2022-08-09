@@ -33,30 +33,35 @@
     {
       <tr>
         <td>
-          @Html.DisplayFor(modelAallery => gallery.GalleryName)
+          @Html.DisplayFor(modelGallery => gallery.GalleryName)
         </td>
         <td>
-          <!-- @foreach (var join in gallery.JoinArtistGallery)
+        @if (gallery.JoinArtistGallery.Count == 0)
           {
-            @join.Artist.ArtistName
+                <p>No artists on display</p>
           }
-           -->
+          <ul>
+          @foreach (var join in gallery.JoinArtistGallery)
+          {
+            <li>@join.Artist.ArtistName</li>
+          }
+          </ul>
+          
       </td>
         <td>
-          <!-- @if (gallery.JoinArtworkGallery.Count == 0)
+          @* <!-- @if (gallery.JoinArtworkGallery.Count == 0)
           {
-                <p>Not artwork on display</p>
+                <p>No artwork on display</p>
           }
           @foreach (var join in gallery.JoinArtworkGallery)
           {
             @join.Artwork.Title
-          }
-           -->
+          } --> *@
       </td>
         <td>
           @Html.ActionLink("Details", "Details", new { id = gallery.GalleryId }) |
-          @Html.ActionLink("Edit", "Edit", new { id = gallery.GalleryId }) |
-          @* @Html.ActionLink("Delete", "Delete", new { id = gallery.GalleryId }) *@
+          @Html.ActionLink("Edit", "Edit", new { id = gallery.GalleryId }) | 
+          @Html.ActionLink("Add Artist", "AddArtist", new { id = gallery.GalleryId })
         </td>
       </tr>
     }

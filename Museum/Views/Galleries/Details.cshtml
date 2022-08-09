@@ -9,10 +9,10 @@
 <h3>@Html.DisplayNameFor(model => model.GalleryName): @Html.DisplayFor(model => model.GalleryName)<h3>
 
     <h3>@Html.Label("Artwork"):
-      @foreach (var join in Model.JoinArtworkGallery)
+      @* @foreach (var join in Model.JoinArtworkGallery)
       {
         <p>@join.Artwork.Title</p>
-      }
+      } *@
 
       @if (@Model.JoinArtistGallery.Count == 0)
       {

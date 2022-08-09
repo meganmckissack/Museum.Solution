@@ -36,20 +36,20 @@
           @Html.DisplayFor(modelArtwork => artwork.Title)
         </td>
         <td>
-          <!-- @foreach(var join in artwork.JoinArtistArtwork)
+          @foreach(var join in artwork.JoinArtistArtwork)
           {
             @join.Artist.ArtistName
-          } -->
+          }
         </td>
         <td>
-          <!-- @if (artwork.JoinArtworkGallery.Count == 0)
+          @* @if (artwork.JoinArtworkGallery.Count == 0)
           {
             <p>Not on display</p>
-          }
-          @foreach(var join in artwork.JoinArtworkGallery)
+          } *@
+          @* @foreach(var join in artwork.JoinArtworkGallery)
           {
             @join.Gallery.GalleryName
-          } -->
+          } *@
         </td>
         <td>
           @Html.ActionLink("Details", "Details", new { id = artwork.ArtworkId }) |

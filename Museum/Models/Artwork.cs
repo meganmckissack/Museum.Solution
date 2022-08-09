@@ -9,13 +9,15 @@ namespace Museum.Models
     public Artwork()
       {
           this.JoinArtistArtwork = new HashSet<ArtistArtwork>();
-          this.JoinArtworkGallery = new HashSet<ArtworkGallery>();
+          // this.JoinArtworkGallery = new HashSet<ArtworkGallery>();
       }
       
     // auto implemented properties
     public string Title { get; set; }
     public int ArtworkId { get; set; }
+    public int GalleryId { get; set; }
+    public virtual Gallery Gallery { get; set; }
     public virtual ICollection<ArtistArtwork> JoinArtistArtwork { get; }
-    public virtual ICollection<ArtworkGallery> JoinArtworkGallery { get; }
+    // public virtual ICollection<ArtworkGallery> JoinArtworkGallery { get; }
   }
 }

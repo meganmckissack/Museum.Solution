@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@using System.Collections.Generic;
+@model Museum.Models.Gallery
+
+<h2>Add an artist</h2>
+
+<h4>Add a Artist to this gallery: @Html.DisplayFor(model => model.GalleryName)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.GalleryId)
+
+    @Html.Label("Select Artist")
+    @Html.DropDownList("ArtistId")
+
+    <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to gallery list", "Index")</p>
