@@ -91,27 +91,6 @@ namespace Museum.Solution.Migrations
                     b.ToTable("Artworks");
                 });
 
-            modelBuilder.Entity("Museum.Models.ArtworkGallery", b =>
-                {
-                    b.Property<int>("ArtworkGalleryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("ArtworkId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GalleryId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ArtworkGalleryId");
-
-                    b.HasIndex("ArtworkId");
-
-                    b.HasIndex("GalleryId");
-
-                    b.ToTable("ArtworkGallery");
-                });
-
             modelBuilder.Entity("Museum.Models.Gallery", b =>
                 {
                     b.Property<int>("GalleryId")
@@ -171,25 +150,6 @@ namespace Museum.Solution.Migrations
                         .HasForeignKey("GalleryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Gallery");
-                });
-
-            modelBuilder.Entity("Museum.Models.ArtworkGallery", b =>
-                {
-                    b.HasOne("Museum.Models.Artwork", "Artwork")
-                        .WithMany()
-                        .HasForeignKey("ArtworkId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Museum.Models.Gallery", "Gallery")
-                        .WithMany()
-                        .HasForeignKey("GalleryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Artwork");
 
                     b.Navigation("Gallery");
                 });

@@ -21,19 +21,6 @@ namespace Museum.Solution.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Artworks",
-                columns: table => new
-                {
-                    ArtworkId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Artworks", x => x.ArtworkId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Galleries",
                 columns: table => new
                 {
@@ -44,32 +31,6 @@ namespace Museum.Solution.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Galleries", x => x.GalleryId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ArtistArtwork",
-                columns: table => new
-                {
-                    ArtistArtworkId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    ArtistId = table.Column<int>(type: "int", nullable: false),
-                    ArtworkId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ArtistArtwork", x => x.ArtistArtworkId);
-                    table.ForeignKey(
-                        name: "FK_ArtistArtwork_Artists_ArtistId",
-                        column: x => x.ArtistId,
-                        principalTable: "Artists",
-                        principalColumn: "ArtistId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ArtistArtwork_Artworks_ArtworkId",
-                        column: x => x.ArtworkId,
-                        principalTable: "Artworks",
-                        principalColumn: "ArtworkId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -99,28 +60,48 @@ namespace Museum.Solution.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ArtworkGallery",
+                name: "Artworks",
                 columns: table => new
                 {
-                    ArtworkGalleryId = table.Column<int>(type: "int", nullable: false)
+                    ArtworkId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    GalleryId = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    GalleryId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Artworks", x => x.ArtworkId);
+                    table.ForeignKey(
+                        name: "FK_Artworks_Galleries_GalleryId",
+                        column: x => x.GalleryId,
+                        principalTable: "Galleries",
+                        principalColumn: "GalleryId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ArtistArtwork",
+                columns: table => new
+                {
+                    ArtistArtworkId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ArtistId = table.Column<int>(type: "int", nullable: false),
                     ArtworkId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ArtworkGallery", x => x.ArtworkGalleryId);
+                    table.PrimaryKey("PK_ArtistArtwork", x => x.ArtistArtworkId);
                     table.ForeignKey(
-                        name: "FK_ArtworkGallery_Artworks_ArtworkId",
+                        name: "FK_ArtistArtwork_Artists_ArtistId",
+                        column: x => x.ArtistId,
+                        principalTable: "Artists",
+                        principalColumn: "ArtistId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ArtistArtwork_Artworks_ArtworkId",
                         column: x => x.ArtworkId,
                         principalTable: "Artworks",
                         principalColumn: "ArtworkId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ArtworkGallery_Galleries_GalleryId",
-                        column: x => x.GalleryId,
-                        principalTable: "Galleries",
-                        principalColumn: "GalleryId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -145,13 +126,8 @@ namespace Museum.Solution.Migrations
                 column: "GalleryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ArtworkGallery_ArtworkId",
-                table: "ArtworkGallery",
-                column: "ArtworkId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ArtworkGallery_GalleryId",
-                table: "ArtworkGallery",
+                name: "IX_Artworks_GalleryId",
+                table: "Artworks",
                 column: "GalleryId");
         }
 
@@ -164,13 +140,10 @@ namespace Museum.Solution.Migrations
                 name: "ArtistGallery");
 
             migrationBuilder.DropTable(
-                name: "ArtworkGallery");
+                name: "Artworks");
 
             migrationBuilder.DropTable(
                 name: "Artists");
-
-            migrationBuilder.DropTable(
-                name: "Artworks");
 
             migrationBuilder.DropTable(
                 name: "Galleries");

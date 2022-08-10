@@ -8,7 +8,6 @@ namespace Museum.Models
     public DbSet<ArtistArtwork> ArtistArtwork { get; set; }
     public DbSet<ArtistGallery> ArtistGallery { get; set; }
     public DbSet<Artwork> Artworks { get; set; }
-    public DbSet<ArtworkGallery> ArtworkGallery { get; set; }
     public DbSet<Gallery> Galleries { get; set; }
 
     public MuseumContext(DbContextOptions options) : base(options) { }
