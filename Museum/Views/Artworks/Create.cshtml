@@ -7,15 +7,21 @@
 @model Museum.Models.Artwork
 
 <h4>Add a new task</h4>
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Artwork", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+  @Html.ValidationSummary(true)
+
   @Html.LabelFor(model => model.Title)
   @Html.TextBoxFor(model => model.Title)
 
   @Html.Label("Select Artist")
   @Html.DropDownList("ArtistId")
 
-  <input type="submit" value="Add new Artwork"/>
+  @Html.Label("Upload your image")
+  @Html.TextBoxFor(model => model.artwork_image_data, new { Type = "File" })
+  @Html.ValidationMessageFor(model => model.artwork_image_data)
+
+  <input type="submit" value="Add new Artwork" />
 }
 <hr />
 <p>@Html.ActionLink("Show all Artworks", "Index")</p>

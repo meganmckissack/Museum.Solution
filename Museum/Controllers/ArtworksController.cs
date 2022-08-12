@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 using Museum.Models;
 
 namespace Museum.Controllers
@@ -21,6 +22,42 @@ namespace Museum.Controllers
     return View(_db.Artworks.ToList());
     }
 
+    // [HttpPost]
+    // public async Task<IActionResult> Index(IList<IFormFile> files)
+    // {
+    //   foreach (var file in files)
+    //   {
+    //     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');// FileName returns "fileName.ext"
+    //     if(fileName.EndsWith(".txt"))
+    //     {
+    //       var filePath = _db.Artworks.Museum + "\\wwwroot\\" + fileName; 
+    //       await file.SaveAsAsync(filePath);
+    //     }
+    //   }
+    //   return RedirectToAction("Index");
+    // }
+    
+    // public ActionResult insert()
+    // {
+    //   return View();
+    // }
+
+    // [HttpPost]
+    // public ActionResult insert(Artwork artwork)
+    // {
+    //   //create path to store in database
+    //   artwork.artwork_image = "~/images/" + artwork.artwork_image_data.FileName;
+
+    //   //store image in folder
+    //   artwork.artwork_image_data.SaveAs(Server.MapPath("images") + "/" + artwork.artwork_image_data.FileName);
+
+    //   _db.GetTable<Artworrks>().InsertOnSubmit(artwork);
+    //   _db.SubmitChanges();
+
+    //   return View();
+
+    // }
+  
     public ActionResult Create()
     {
       ViewBag.ArtistId = new SelectList(_db.Artists, "ArtistId", "ArtistName");
